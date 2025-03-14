@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_REPOSITORIES } from '../graphql/queries';
 import { Container, Typography, Card, CardContent, CircularProgress } from '@material-ui/core';
+import RepoDetails from './RepoDetails';
 
 const RepoList = () => {
   const { loading, error, data } = useQuery(GET_REPOSITORIES);
+  const [selectedRepo, setSelectedRepo] = useState(null);
 
   if (loading) return <CircularProgress />;
   if (error) return <Typography color="error">Error: {error.message}</Typography>;
+
+  if (selectedRepo) {
+    return <RepoDetails repo={selectedRepo} onBack={() => setSelectedRepo(null)} />;
+  }
 
   return (
     <Container maxWidth="md" style={{ marginTop: '20px' }}>
@@ -15,12 +21,14 @@ const RepoList = () => {
         My GitHub Repositories
       </Typography>
       {data.viewer.repositories.nodes.map((repo) => (
-        <Card key={repo.id} style={{ marginBottom: '16px', padding: '10px', boxShadow: '2px 4px 10px rgba(0,0,0,0.1)' }}>
+        <Card
+          key={repo.id}
+          onClick={() => setSelectedRepo(repo)}
+          style={{ marginBottom: '16px', padding: '10px', boxShadow: '2px 4px 10px rgba(0,0,0,0.1)', cursor: 'pointer' }}
+        >
           <CardContent>
-            <Typography variant="h6" style={{ fontWeight: 'bold' }}>
-              <a href={repo.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#1976D2' }}>
-                {repo.name}
-              </a>
+            <Typography variant="h6" style={{ fontWeight: 'bold', color: '#1976D2' }}>
+              {repo.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" style={{ marginBottom: '8px' }}>
               {repo.description || 'No description available'}
