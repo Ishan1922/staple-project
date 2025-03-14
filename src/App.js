@@ -1,10 +1,13 @@
 import React from 'react';
+import { ApolloProvider } from '@apollo/client';
+import client from './apolloClient';
+import RepoList from './components/RepoList';
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
+    <ApolloProvider client={client}>
+      <RepoList />
+    </ApolloProvider>
   );
 };
 
