@@ -8,6 +8,9 @@ A React-based application that interacts with GitHub’s GraphQL API using Apoll
 ## 🛠 Project Setup
 
 ### 1️⃣ Clone the Repository
+```sh
+git clone <repository_url>
+```
 
 ### 2️⃣ Install Dependencies
 ```sh
