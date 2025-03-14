@@ -4,7 +4,6 @@ A React-based application that interacts with GitHub’s GraphQL API using Apoll
 ✅ View their personal repositories
 ✅ Fetch related Pull Requests
 ✅ Create new repositories
-✅ Navigate through paginated results
 
 ## 🛠 Project Setup
 
