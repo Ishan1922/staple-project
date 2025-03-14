@@ -4,7 +4,7 @@ const client = new ApolloClient({
   link: new HttpLink({
     uri: 'https://api.github.com/graphql',
     headers: {
-      Authorization: `Bearer ${process.env.VITE_GITHUB_TOKEN}`,
+      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
     },
   }),
   cache: new InMemoryCache(),
