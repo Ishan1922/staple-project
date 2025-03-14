@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_REPOSITORIES } from '../graphql/queries';
-import { Container, Typography, Card, CardContent, CircularProgress } from '@material-ui/core';
+import { Container, Typography, Card, CardContent, CircularProgress } from '@mui/material';
 import RepoDetails from './RepoDetails';
 import CreateRepoForm from './CreateRepoForm';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_PULL_REQUESTS } from '../graphql/queries';
-import { Container, Typography, CircularProgress, Card, CardContent, Button } from '@material-ui/core';
+import { Container, Typography, CircularProgress, Card, CardContent, Button } from '@mui/material';
 
 const RepoDetails = ({ repo, onBack }) => {
   const { loading, error, data } = useQuery(GET_PULL_REQUESTS, {

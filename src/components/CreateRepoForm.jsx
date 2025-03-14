@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_REPOSITORY } from '../graphql/mutations';
-import { TextField, Button, Container, Typography, CircularProgress } from '@material-ui/core';
+import { TextField, Button, Container, Typography, CircularProgress } from '@mui/material';
 
 const CreateRepoForm = ({ onRepoCreated }) => {
   const [repoName, setRepoName] = useState('');
