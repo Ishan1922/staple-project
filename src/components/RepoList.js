@@ -3,9 +3,10 @@ import { useQuery } from '@apollo/client';
 import { GET_REPOSITORIES } from '../graphql/queries';
 import { Container, Typography, Card, CardContent, CircularProgress } from '@material-ui/core';
 import RepoDetails from './RepoDetails';
+import CreateRepoForm from './CreateRepoForm';
 
 const RepoList = () => {
-  const { loading, error, data } = useQuery(GET_REPOSITORIES);
+  const { loading, error, data, refetch } = useQuery(GET_REPOSITORIES);
   const [selectedRepo, setSelectedRepo] = useState(null);
 
   if (loading) return <CircularProgress />;
@@ -20,6 +21,11 @@ const RepoList = () => {
       <Typography variant="h4" gutterBottom style={{ textAlign: 'center' }}>
         My GitHub Repositories
       </Typography>
+
+      {/* Create Repository Form */}
+      <CreateRepoForm onRepoCreated={refetch} />
+
+      {/* List of Repositories */}
       {data.viewer.repositories.nodes.map((repo) => (
         <Card
           key={repo.id}
